@@ -1,0 +1,53 @@
+import '../models/MetroLine.dart';
+import '../models/station.dart';
+
+final MetroLine line1 = MetroLine(
+  id: 1,
+  name: 'Line 1',
+  directions: ['Helwan', 'New Marg'],
+  stations: List.generate(
+    line1Stations.length,
+    (index) => Station(
+      id: 1000 + index + 1,
+      name: line1Stations[index],
+      lineId: 1,
+    ),
+  ),
+);
+const List<String> line1Stations = [
+  'Helwan',
+  'Ain Helwan',
+  'Helwan University',
+  'Wadi Hof',
+  'Hadayek Helwan',
+  'El-Maasara',
+  'Tora El-Asmant',
+  'Kozzika',
+  'Tora El-Balad',
+  'Sakanat El-Maadi',
+  'Maadi',
+  'Hadayek El-Maadi',
+  'Dar El-Salam',
+  'El-Zahraa',
+  'Mar Girgis',
+  'El-Malek El-Saleh',
+  'Al-Sayeda Zeinab',
+  'Saad Zaghloul',
+  'Sadat',
+  'Nasser',
+  'Orabi',
+  'Al-Shohadaa',
+  'Ghamra',
+  'El-Demerdash',
+  'Manshiet El-Sadr',
+  'Kobri El-Qobba',
+  'Hammamat El-Qobba',
+  'Saray El-Qobba',
+  'Hadayeq El-Zaitoun',
+  'Helmeyet El-Zaitoun',
+  'El-Matareyya',
+  'Ain Shams',
+  'Ezbet El-Nakhl',
+  'El-Marg',
+  'New El-Marg',
+];
