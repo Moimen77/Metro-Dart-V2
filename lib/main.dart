@@ -1,20 +1,26 @@
+import 'Functions/GeneralFunctions.dart';
+import 'Functions/MetroTransfer.dart';
 import 'data/AllLines.dart';
 import 'grafh/metroGrafh.dart';
 
 void main() {
   final graph = MetroGraph();
   AddAllLinesToGraph(graph);
+  addMetroTransfers(graph, allLines);
+  graph.adjacencyList.forEach((stationId, edges) {
+    final station = graph.stations[stationId];
+    if (station != null) {
+      print(
+          'Station: ${station.name} (ID: ${station.id}) Line: ${station.lineId})');
+      for (final edge in edges) {
+        final destinationStation = graph.stations[edge.destinationId];
+        if (destinationStation != null) {
+          print(
+              '  Connected to: ${destinationStation.name} (ID: ${destinationStation.id}), Transfer: ${edge.isTransfer}');
+        }
+      }
+    }
+  });
 
-  // Print Graph
-  for (final entry in graph.adjacencyList.entries) {
-    final station = graph.stations[entry.key]!;
-
-    final neighbors = entry.value.map((edge) {
-      final neighbor = graph.stations[edge.destinationId]!;
-
-      return neighbor.name;
-    }).toList();
-
-    print('${station.name} -> $neighbors');
-  }
+  printTransfers(graph);
 }
