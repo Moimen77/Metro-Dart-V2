@@ -8,7 +8,7 @@ final MetroLine line3 = MetroLine(
   stations: List.generate(
     line3Stations.length,
     (index) => Station(
-      id: 2000 + index + 1,
+      id: 3000 + index + 1,
       name: line3Stations[index],
       lineId: 3,
     ),
@@ -17,15 +17,16 @@ final MetroLine line3 = MetroLine(
 
 // فرع جامعة القاهرة (بيتفرع من Kit Kat)
 final MetroLine line3CairoUniBranch = MetroLine(
-  id: 3,
+  id: 4,
+  parentLineId: 3,
   name: 'Line 3 - Cairo University Branch',
   directions: ['Adly Mansour', 'Cairo University'],
   stations: List.generate(
     line3CairoUniBranchStations.length,
     (index) => Station(
-      id: 2100 + index + 1,
+      id: 3100 + index + 1,
       name: line3CairoUniBranchStations[index],
-      lineId: 3,
+      lineId: 4,
     ),
   ),
 );
@@ -66,6 +67,7 @@ const List<String> line3Stations = [
 
 // فرع جامعة القاهرة (بعد Kit Kat)
 const List<String> line3CairoUniBranchStations = [
+  'Kit Kat',
   'Tawfikia',
   'Wadi El-Nil',
   'Gamaat El-Dowal',

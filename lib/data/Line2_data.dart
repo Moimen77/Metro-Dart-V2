@@ -8,7 +8,7 @@ final MetroLine line2 = MetroLine(
   stations: List.generate(
     line2Stations.length,
     (index) => Station(
-      id: 1000 + index + 1,
+      id: 2000 + index + 1,
       name: line2Stations[index],
       lineId: 2,
     ),
