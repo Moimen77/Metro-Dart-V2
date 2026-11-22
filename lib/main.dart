@@ -1,26 +1,28 @@
-import 'Functions/GeneralFunctions.dart';
 import 'Functions/MetroTransfer.dart';
+import 'algorithm/bfs.dart';
 import 'data/AllLines.dart';
 import 'grafh/metroGrafh.dart';
+import 'models/station.dart';
 
 void main() {
   final graph = MetroGraph();
   AddAllLinesToGraph(graph);
   addMetroTransfers(graph, allLines);
-  graph.adjacencyList.forEach((stationId, edges) {
-    final station = graph.stations[stationId];
-    if (station != null) {
-      print(
-          'Station: ${station.name} (ID: ${station.id}) Line: ${station.lineId})');
-      for (final edge in edges) {
-        final destinationStation = graph.stations[edge.destinationId];
-        if (destinationStation != null) {
-          print(
-              '  Connected to: ${destinationStation.name} (ID: ${destinationStation.id}), Transfer: ${edge.isTransfer}');
-        }
-      }
-    }
-  });
+  final route = bfs(
+    graph,
+    findStation(allLines, 4, 'Tawfikia')!.id,
+    findStation(allLines, 3, 'El-Geish')!.id,
+  );
 
-  printTransfers(graph);
+  if (route == null) {
+    print('No route found!');
+  } else {
+    print('Route:');
+
+    for (int i = 0; i < route.length; i++) {
+      print('${i + 1}. ${route[i]}');
+    }
+
+    print('Connections: ${route.length - 1}');
+  }
 }
