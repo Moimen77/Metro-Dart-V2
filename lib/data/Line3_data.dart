@@ -20,7 +20,7 @@ final MetroLine line3CairoUniBranch = MetroLine(
   id: 4,
   parentLineId: 3,
   name: 'Line 3 - Cairo University Branch',
-  directions: ['Adly Mansour', 'Cairo University'],
+  directions: ['Kit Kat', 'Cairo University'],
   stations: List.generate(
     line3CairoUniBranchStations.length,
     (index) => Station(

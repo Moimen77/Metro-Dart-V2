@@ -1,4 +1,5 @@
 import 'Functions/MetroTransfer.dart';
+import 'Functions/routeFormater.dart';
 import 'algorithm/bfs.dart';
 import 'data/AllLines.dart';
 import 'grafh/metroGrafh.dart';
@@ -14,15 +15,9 @@ void main() {
     findStation(allLines, 3, 'El-Geish')!.id,
   );
 
-  if (route == null) {
-    print('No route found!');
+  if (route != null) {
+    printFormattedRoute(route, allLines);
   } else {
-    print('Route:');
-
-    for (int i = 0; i < route.length; i++) {
-      print('${i + 1}. ${route[i]}');
-    }
-
-    print('Connections: ${route.length - 1}');
+    print('No route found!');
   }
 }
